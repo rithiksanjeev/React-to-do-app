@@ -22,14 +22,14 @@ import {
   } from '@mui/material/styles';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About'];
+const navItems = [];
 const violetBase = '#7F00FF';
-const violetMain = alpha(violetBase, 0.7);
+const violetMain = alpha(violetBase, 1.0);
 const theme = createTheme({
     palette: {
         violet: {
             main: violetMain,
-            light: alpha(violetBase, 0.5),
+            light: alpha(violetBase, 1),
             dark: alpha(violetBase, 0.9),
             contrastText: getContrastRatio(violetMain, '#fff') > 4.5 ? '#fff' : '#111',
           },
@@ -47,7 +47,7 @@ function Header(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        TODO APP
+        My TODO APP
       </Typography>
       <Divider />
       <List>
@@ -82,9 +82,9 @@ function Header(props) {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' },fontWeight:600,textAlign:'center' }}
           >
-            TODO
+            MY TODO
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
