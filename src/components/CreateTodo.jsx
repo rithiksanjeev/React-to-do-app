@@ -37,7 +37,7 @@ const PriorityOptions = [
     { label: 'Low',Value:'low' }
 ]
 
-export default function CreateTodo() {
+export default function CreateTodo({fetchtodos}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -51,13 +51,14 @@ const [date,setDate] = React.useState("");
 
 // function that submits the form data to firebase and close the modal
 
-function handleFormSubmit() {
+const handleFormSubmit = async () => {
   // Form Validations
   validateForm()
   // api call to submit form data
   // axois - to make api call
-  axios.post('https://jan-project-aa287-default-rtdb.asia-southeast1.firebasedatabase.app/todo.json',{task,description,priority,date})
+  const response = await axios.post('https://jan-project-aa287-default-rtdb.asia-southeast1.firebasedatabase.app/todo.json',{task,description,priority,date})
   alert("To Do task created successfully")
+  fetchtodos();
   //Reset values
   restFormValues()
   //modal closing
